@@ -1,21 +1,21 @@
 {
     "name": "employee-tracker",
     "version": "1.0.0",
-    "description": "",
+    "description": "employee database tracker",
     "main": "server.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node server.js"
+        "start": "server.js"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ajalloh1/Track-My-Employee.git"
+        "url": "https://github.com/Ajalloh1/Employee-Tracker-CMS-"
     },
     "keywords": [],
-    "author": "",
+    "author": "Ahmadu Jalloh",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/ajalloh1/Track-My-Employee/issues"
+        "url": "https://github.com/Ajalloh1/Employee-Tracker-CMS"
     },
     "homepage": "https://github.com/ajalloh1/Employee-tracker CMS#readme",
     "dependencies": {
