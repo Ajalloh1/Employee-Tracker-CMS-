@@ -1,5 +1,6 @@
+-- database //
 USE employees_db;
-
+-- //inserting departments//
 INSERT INTO department
     (d_name)
 VALUES
@@ -7,7 +8,7 @@ VALUES
     ('Engineering'),
     ('legal'),
     ('finance');
-
+-- roles and salary and id
 INSERT INTO role
     (title, salary, department_id)
 VALUES
@@ -19,7 +20,7 @@ VALUES
     ('Accountant', 80000, 3),
     ('Legal Team Lead', 120000, 4),
     ('Attorney', 130000, 4);
-
+-- //inserting names and id
 INSERT INTO employee
     (last_name, first_name, role_id, manager_id)
 VALUES
