@@ -115,7 +115,32 @@ function search() {
                         ]).then(answers => {
 
                             addEmployee(answers.employeeFirst, answers.employeeLast, answers.department, answers.manager);
+                            search();
+                        })
+                    break;
+                // New case prompt data input for adding department to database//
+                case "Add Department":
+                    inquirer
+                        .prompt([
+                            {
+                                name: "Department",
+                                type: "input",
+                                message: "What department would you like to add?",
+                                validate: answer => {
+                                    if (answer !== "") {
+                                        return true;
+                                    }
+                                    return "You must enter a department.";
+                                }
+                            },
+
+                        ]).then(answers => {
+                            //adding the information to the database//
+                            addDepartment(answers.Department);
                             runSearch();
                         })
-
                     break;
+                ///adding role//
+                case "Add Role":
+                    inquirer
+                        .prompt([
