@@ -137,7 +137,7 @@ function search() {
                         ]).then(answers => {
                             //adding the information to the database//
                             addDepartment(answers.Department);
-                            runSearch();
+                            search();
                         })
                     break;
                 ///adding role//
@@ -171,6 +171,49 @@ function search() {
                         ]).then(answers => {
                             // Adds role to database
                             addRole(answers.title, answers.salary, answers.department_id);
-                            runSearch();
+                            search();
                         })
                     break;
+                //new input for removing employees from db//
+
+                case "Remove ":
+                    inquirer
+                        .prompt([
+                            {
+                                name: "id",
+                                type: "input",
+                                message: "What is the employee's id?",
+
+                            }
+                        ]).then(answers => {
+                            // Removes employee to database
+                            removeEmployee(answers.id);
+                            search();
+                        })
+                    break;
+                // to udate employees//
+                case "Update employee role":
+
+                    inquirer
+                        .prompt([
+                            {
+                                name: "employeeId",
+                                type: "input",
+                                message: "Waht is the employee's id?",
+                            },
+                            {
+                                name: "roleId",
+                                type: "input",
+                                message: "What is the role's id?",
+
+                            }
+
+                        ]).then(answers => {
+                            // Updates employee's role
+                            updateByRole(answers.employeeId, answers.roleId);
+                            runSearch();
+
+                        })
+
+                    break;
+
