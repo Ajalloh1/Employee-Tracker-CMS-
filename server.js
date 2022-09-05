@@ -216,4 +216,30 @@ function search() {
                         })
 
                     break;
+                //prompt for updating employee manager//
+                case "Update manager":
 
+                    inquirer
+                        .prompt([
+                            {
+                                name: "manager",
+                                type: "input",
+                                message: "wat is the manager id?",
+                            },
+                            {
+                                name: "Employee",
+                                type: "input",
+                                message: "please enter employee id",
+
+                            }
+                        ]).then(answers => {
+                            updateByManager(answers.manager, answers.Employee);
+                            runSearch();
+
+                        })
+
+                    break;
+            }
+
+        });
+}
