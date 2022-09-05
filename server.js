@@ -144,3 +144,33 @@ function search() {
                 case "Add Role":
                     inquirer
                         .prompt([
+                            {
+                                name: "tittle",
+                                type: "input",
+                                message: "What is the tittle of the role you are adding?",
+                                validate: answer => {
+                                    if (answer !== "") {
+                                        return true;
+                                    }
+                                    return "You must enter tittle";
+                                }
+                            },
+                            {
+                                name: "salary",
+                                type: "input",
+                                message: "What is the salary for the role?",
+
+                            },
+                            {
+                                name: "department_id",
+                                type: "input",
+                                message: "Waht is the id of the department.",
+
+                            }
+
+                        ]).then(answers => {
+                            // Adds role to database
+                            addRole(answers.title, answers.salary, answers.department_id);
+                            runSearch();
+                        })
+                    break;
