@@ -269,3 +269,28 @@ function byDepartment() {
             console.table(department)
         })
 };
+// function for all roles vie//
+function byRole() {
+
+    var manager = connection.query("SELECT employee.id, role.title, department.d_name AS department, role.salary AS manager FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department on role.department_id = department.id LEFT JOIN employee manager on manager.id = employee.manager_id;",
+
+
+        function (error, manager) {
+            if (error) throw error
+            console.log("\n")
+            console.table(manager)
+        })
+};
+//function for updating manager //
+function updateByManager(managerId, employeeId) {
+
+    var updateManager = connection.query(
+        "UPDATE employee SET manager_id = ? WHERE id = ?",
+        [managerId, employeeId],
+        function (error, updateManager) {
+            if (error) throw error
+        })
+
+    byRole();
+
+}
