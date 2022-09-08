@@ -294,3 +294,26 @@ function updateByManager(managerId, employeeId) {
     byRole();
 
 }
+// function for adding employee //
+function addEmployee(employeeFirst, employeeLast, department, manager) {
+
+    var add = connection.query(
+        "INSERT INTO employee SET first_name = ?, last_name = ?, role_id = ?, manager_id = ?",
+        [employeeFirst, employeeLast, department, manager],
+        function (error, add) {
+            if (error) throw error
+        })
+
+    byEmployees();
+}
+
+// fucntion for displaying departments//
+function departmentTable() {
+    var depTable = connection.query("SELECT d_name FROM department;",
+
+
+        function (error, depTable) {
+            if (error) throw error
+            console.table(depTable)
+        })
+}
