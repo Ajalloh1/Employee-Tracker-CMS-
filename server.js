@@ -1,6 +1,5 @@
 // requiring the dependencies
 const inquirer = require('inquirer');
-const util = require('util');
 const mysql = require('mysql2');
 const fs = require('fs');
 const cTable = require('console.table');
@@ -59,7 +58,7 @@ function runSearch() {
                     inquirer
                         .prompt([
                             {
-                                name: "employees last name",
+                                name: "employeeLast",
                                 type: "input",
                                 message: "What is the employee's last name?",
                                 validate: answer => {
@@ -70,7 +69,7 @@ function runSearch() {
                                 }
                             },
                             {
-                                name: "employee first name",
+                                name: "employeeFirst",
                                 type: "input",
                                 message: "What is the employee's first name",
                                 validate: answer => {
@@ -92,6 +91,7 @@ function runSearch() {
                                 message: "Please enter manager id",
                             }
                         ]).then(answers => {
+                            console.log(answers)
 
                             addEmployee(answers.employeeFirst, answers.employeeLast, answers.department, answers.manager);
                             runSearch();
