@@ -1,4 +1,4 @@
--- creating database for employee. if exist drop if not create//
+-- employee database creation. Drop if exist and create//
 DROP DATABASE IF EXISTS employees_db;
 CREATE DATABASE employees_db;
 

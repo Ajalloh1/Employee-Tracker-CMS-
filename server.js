@@ -1,28 +1,25 @@
-// requiring the dependencies
+// below are required dependecies//
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
 const fs = require('fs');
 const cTable = require('console.table');
 require('dotenv').config();
-
+///connecting to mysql databases//
 const connection = mysql.createConnection({
     host: 'localhost',
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME
 })
-
-//creating logo using asciiart dependency conneting to the json file//
-// const logoStamp = require('asciiart-logo');
+///requiring the json file//
 const config = require('./package.json');
-// console.log(logoStamp(config).render());
-// data prompt function object//
+// function objects for departments//
 function runSearch() {
     inquirer
         .prompt({
             name: "options",
             type: "list",
-            message: "Please select from the list below to view?",
+            message: "Enter department",
             choices: [
                 "View all employees",
                 "View all roles",
@@ -35,22 +32,17 @@ function runSearch() {
                 "Remove employee",
             ]
         }).then(answers => {
-            // changing or switching statement//
+            // switching to view employee//
             switch (answers.options) {
                 case "View all employees":
 
                     byEmployees();
-
-
                     break;
                 //new case //
                 case "View all departments":
-
                     byDepartment();
                     break;
-
                 case "View all roles":
-
                     byRole();
                     break;
                 //case for adding employees data input//
@@ -119,7 +111,7 @@ function runSearch() {
                             runSearch();
                         })
                     break;
-                ///adding role//
+                ///case for adding role//
                 case "Add Role":
                     inquirer
                         .prompt([
@@ -186,14 +178,11 @@ function runSearch() {
                                 message: "What is the role's id?",
 
                             }
-
                         ]).then(answers => {
                             // Updates employee's role
                             updateByRole(answers.employeeId, answers.roleId);
                             runSearch();
-
                         })
-
                     break;
                 //prompt for updating employee manager//
                 case "Update manager":
@@ -209,7 +198,6 @@ function runSearch() {
                                 name: "Employee",
                                 type: "input",
                                 message: "please enter employee id",
-
                             }
                         ]).then(answers => {
                             updateByManager(answers.manager, answers.Employee);
@@ -220,16 +208,14 @@ function runSearch() {
             }
         });
 }
-// fucntion for all employee view//
+// fucntion for viewing all employees//
 function byEmployees() {
-    ////start here//
     var results = connection.promise().query("select employee.id, employee.last_name, employee.first_name, role.title, department.d_name AS department, role.salary, CONCAT(manager.first_name, ' ', manager.last_name) AS manager FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department on role.department_id = department.id LEFT JOIN employee manager on manager.id = employee.manager_id;")
         .then(([rows]) => {
             console.table(rows)
             console.log('\n')
             runSearch();
         })
-    //to here ///
     // console.log(results.catch((err) => console.error(err)))
 };
 // "View alL departments",
@@ -252,7 +238,6 @@ function byRole() {
             console.log('\n')
             runSearch();
         })
-
 };
 //function for updating manager //
 function updateByManager(managerId, employeeId) {
@@ -264,7 +249,6 @@ function updateByManager(managerId, employeeId) {
             console.log('\n')
             runSearch();
         })
-
 };
 // function for adding employee //
 function addEmployee(employeeFirst, employeeLast, department, manager) {
@@ -275,7 +259,6 @@ function addEmployee(employeeFirst, employeeLast, department, manager) {
         function (error, add) {
             if (error) throw error
         })
-
     byEmployees();
 }
 

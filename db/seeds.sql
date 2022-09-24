@@ -12,14 +12,14 @@ VALUES
 INSERT INTO role
     (title, salary, department_id)
 VALUES
-    ('Account manager', 120000, 1),
+    ('Manager', 120000, 1),
     ('Accountant', 90000, 1),
     ('Tech Lead', 150000, 2),
-    ('Senior Engineer', 130000, 2),
+    ('Engineer', 130000, 2),
     ('Sales Person', 700000, 3),
     ('Accountant', 80000, 3),
-    ('Legal Team Lead', 120000, 4),
-    ('Attorney', 130000, 4);
+    ('Team Lead', 120000, 4),
+    ('Lawyer', 130000, 4);
 -- //inserting names and id
 INSERT INTO employee
     (last_name, first_name, role_id, manager_id)
