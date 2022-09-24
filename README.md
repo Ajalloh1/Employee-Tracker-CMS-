@@ -41,4 +41,6 @@ THEN I am prompted to enter the employee’s first name, last name, role, and ma
 WHEN I choose to update an employee role
 
 THEN I am prompted to select an employee to update and their new role and this information is updated in the database.
-### Links to reposetory and walkthrough video
+
+Demo video:  https://drive.google.com/file/d/1ZRfblJNlQmYn3hn0rJn_kz-G6jg4aaDM/view
+Repo: https://github.com/Ajalloh1/Employee-Tracker-CMS-
